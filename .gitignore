@@ -1,0 +1,8 @@
+#Ruby Mine Configuration
+.idea/
+
+#ignore webdriver
+assets/driver/chrome/
+
+#ignore gemlock
+Gemfile.lock

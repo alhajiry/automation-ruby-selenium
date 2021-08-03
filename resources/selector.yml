@@ -1,0 +1,28 @@
+#login component
+
+#button
+tokopedia_login_button: "data-testid:btnHeaderLogin"
+mekari_jurnal_login_button: "id:new-signin-button"
+create_new_sales_dropdown_button: "xpath://*[@id = 'dropdown-activator-shadow' and span='Create new sales'] "
+
+#input-field
+mekari_username_field: "id:user_email"
+mekari_password_field: "id:user_password"
+jurnal_select_product_field: "id:select_product_1"
+jurnal_select_customer_field: "id:select_contact"
+jurnal_add_new_customer_text_button: "xpath://*[@type='button' and text() = ' + Add new ']"
+jurnal_add_new_customer_name_field: "id:display_name"
+jurnal_add_new_customer_email_field: "id:c_email"
+jurnal_add_new_customer_telephone_field: "id:telephone"
+jurnal_add_new_customer_billing_address_field: "id:billing_address"
+jurnal_save_button: "xpath://*[@type='button' and text() = ' Save ']"
+
+#element in modal
+notification_modal_close_button: "xpath:*//button[@class='close btn-close-notification']"
+billing_address_checkbox: "xpath://label[@class='custom-control-label' and text()=' Same with billing address ']"
+
+#navigation-sidebar
+navigation_sales: "id:vnav-sales-link"
+
+#test data to input
+billing_address_data: "Jalan Menuju Surga"

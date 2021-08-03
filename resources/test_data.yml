@@ -1,0 +1,10 @@
+#url
+amazon_url: "https://wwww.tokopedia.com"
+tokopedia_url: "https://wwww.tokopedia.com"
+mekari_jurnal_url: "http://sandbox.jurnal.id/users/login"
+
+#drop-down data list
+dropdown_sales_invoice: " Sales Invoice "
+dropdown_existing_product_sales: "Sales"
+dropdown_customer_john_doe: "John Doe"
+dropdown_customer_add_new: " + Add new "
