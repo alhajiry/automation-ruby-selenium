@@ -66,18 +66,21 @@ begin
     case cond
         when "word"
             base_word = 'testuser'
-            rand_generator = SecureRandom.random_number(5)
+            limiter = 10**3
+            rand_generator = SecureRandom.random_number(limiter)
             rand_string = rand_generator.to_s
             data = base_word + rand_string
         when "phone"
             base_number = '62'
-            rand_generator = SecureRandom.random_number(10)
+            limiter = 10**10
+            rand_generator = SecureRandom.random_number(limiter)
             rand_string = rand_generator.to_s
             data = base_number + rand_string
         when "email"
+            limiter = 10**4
             base_email = 'jurnaltest'
             base_domain = '@mailinator.com'
-            rand_generator = SecureRandom.random_number(4)
+            rand_generator = SecureRandom.random_number(limiter)
             rand_string = rand_generator.to_s
             data = base_email + rand_string + base_domain
         else
