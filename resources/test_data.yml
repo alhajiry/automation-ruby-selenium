@@ -5,6 +5,19 @@ mekari_jurnal_url: "http://sandbox.jurnal.id/users/login"
 
 #drop-down data list
 dropdown_sales_invoice: " Sales Invoice "
-dropdown_existing_product_sales: "Sales"
+dropdown_product_sales: "Sales"
 dropdown_customer_john_doe: "John Doe"
 dropdown_customer_add_new: " + Add new "
+dropdown_product_unit_pcs: "Pcs"
+dropdown_product_buy_account_cash: "(1-10001) - Cash"
+dropdown_product_buy_account_vat_in: "(1-10403) - Advances"
+
+dropdown_product_buy_tax_ppn: "PPN"
+dropdown_product_buy_amount: "10000"
+
+#date-selection
+first_day_of_september: "01/09/2021"
+last_day_of_september: "27/09/2021"
+
+#test data to input
+billing_address_data: "Jalan Menuju Surga"

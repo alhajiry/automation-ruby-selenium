@@ -25,7 +25,7 @@ class Mapper
         element_hash = element_data_hash[element]
 
         selector = element_hash.split(':').first
-        locator  = element_hash.split(':').last
+        locator  = element_hash.partition(':').last
 
         selector_data = [selector, locator]
 

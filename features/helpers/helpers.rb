@@ -1,7 +1,5 @@
 require 'rspec/expectations'
 
-
-
 def user_find(selector, element, timeout = 30)
   begin
     
@@ -54,7 +52,13 @@ end
 
 def user_fill(selector, element, data)
   begin
+    # wait = Selenium::WebDriver::Wait.new(:timeout => 30)
     web_element = user_find(selector, element)
+    isread_only = web_element.attribute('readonly')
+
+    if (isread_only)
+      $driver.execute_script("arguments[0].removeAttribute('readonly', 'readonly');",web_element)
+    end
 
     web_element.clear
     web_element.send_keys(data)
@@ -64,10 +68,34 @@ def user_fill(selector, element, data)
   end
 end
 
+def user_get_value(selector, element, attribute)
+  begin
+    element_value = user_find(selector, element).attribute(attribute)
+
+  rescue StandardError => e
+    raise e.message
+  end
+
+    return element_value
+
+end
+
+def user_get_text(selector, element)
+  begin
+    element_text = user_find(selector, element).text
+
+  rescue StandardError => e
+    raise e.message
+  end
+
+  return element_text
+
+end
+
 def element_displayed_checker(selector, element, timeout = 15) 
     is_displayed = false
     
-    begin
+  begin
 
     if user_find(selector, element, timeout) != nil
       is_displayed = true

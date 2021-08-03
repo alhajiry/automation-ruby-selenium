@@ -6,16 +6,37 @@ mekari_jurnal_login_button: "id:new-signin-button"
 create_new_sales_dropdown_button: "xpath://*[@id = 'dropdown-activator-shadow' and span='Create new sales'] "
 
 #input-field
+#login
 mekari_username_field: "id:user_email"
 mekari_password_field: "id:user_password"
 jurnal_select_product_field: "id:select_product_1"
 jurnal_select_customer_field: "id:select_contact"
-jurnal_add_new_customer_text_button: "xpath://*[@type='button' and text() = ' + Add new ']"
+jurnal_upload_image: "xpath://label[@for='attachments']/../descendant::input[@type='file']"
+jurnal_upload_image_button: "xpath://label[@for='attachments']/../descendant::input[@class='custom-file-input']/following-sibling::label"
+
+#add new customer
+jurnal_add_new_customer_text_button: "xpath://div[@id ='select_contact']/descendant::button[text()=' + Add new ']"
+jurnal_add_new_product_text_button: "xpath://div[@id ='select_product_1']/descendant::button[text()=' + Add new ']"
 jurnal_add_new_customer_name_field: "id:display_name"
 jurnal_add_new_customer_email_field: "id:c_email"
 jurnal_add_new_customer_telephone_field: "id:telephone"
 jurnal_add_new_customer_billing_address_field: "id:billing_address"
 jurnal_save_button: "xpath://*[@type='button' and text() = ' Save ']"
+#add new product
+jurnal_add_new_product_name: "id:name"
+jurnal_add_new_product_unit: "xpath://input[@id='select_unit']/parent::div"
+jurnal_add_new_product_code: "id:product_code"
+jurnal_add_new_prod_cat: "class:tag_select"
+jurnal_add_new_buy_unit_price: "id:buy_price_per_unit"
+jurnal_add_new_buy_account: "xpath://label[@for='buy_account']/../div/div/div/div[@class='multiselect__tags']"
+jurnal_add_new_buy_tax: "xpath://label[@for='buy_tax']/../div/div/div/div/div[@class='multiselect__tags']"
+jurnal_add_new_sell_unit_price: "id:sell_price_per_unit"
+jurnal_add_new_sales_account: "xpath://label[@for='sell_account']/../div/div/div/div[@class='multiselect__tags']"
+jurnal_add_new_sell_tax: "xpath://label[@for='sell_tax']/../div/div/div/div/div[@class='multiselect__tags']"
+jurnal_buy_item_checkbox: "xpath://label[@class='custom-control-label' and text()=' I buy this item ']/.."
+jurnal_sell_item_checkbox: "xpath://label[@class='custom-control-label' and text()=' I sell this item ']/.."
+
+jurnal_input_product_first: "xpath:(//input[@placeholder = 'Select product'])[1]"
 
 #element in modal
 notification_modal_close_button: "xpath:*//button[@class='close btn-close-notification']"
@@ -24,5 +45,14 @@ billing_address_checkbox: "xpath://label[@class='custom-control-label' and text(
 #navigation-sidebar
 navigation_sales: "id:vnav-sales-link"
 
-#test data to input
-billing_address_data: "Jalan Menuju Surga"
+#date picker component
+date_today_button: "class:date-picker-shortcut-button"
+date_picker_transaction_date: "xpath://label[@class='form-group-label' and text()='Transaction date']/following-sibling::div/input"
+date_picker_due_date: "xpath://label[@class='form-group-label' and text()='Due date']/following-sibling::div/input"
+date_picker_next_button: "class:date-picker-next-button"
+date_picker_previous_button: "class:date-picker-previous-button"
+date_picker_header: "class:date-picker-header-title"
+
+#modal
+create_contact_modal: "id:modal_create_contact___BV_modal_content_"
+add_new_product_modal: "id:modal_create_product-1___BV_modal_content_"
