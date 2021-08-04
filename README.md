@@ -1,5 +1,7 @@
 # Automation Ruby Selenium
 
+## PLEASE USE BRANCH DEVELOP, DON'T USE MASTER
+
 ## (Currently can only be run in Chrome and Mac OS)
 
 **To run :**
