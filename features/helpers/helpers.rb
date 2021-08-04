@@ -68,9 +68,9 @@ def user_fill(selector, element, data)
   end
 end
 
-def user_get_value(selector, element, attribute)
+def user_get_value(selector, element, el_attribute)
   begin
-    element_value = user_find(selector, element).attribute(attribute)
+    element_value = user_find(selector, element).attribute(el_attribute)
 
   rescue StandardError => e
     raise e.message

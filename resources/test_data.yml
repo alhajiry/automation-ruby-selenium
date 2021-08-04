@@ -14,6 +14,8 @@ dropdown_product_buy_account_vat_in: "(1-10403) - Advances"
 
 dropdown_product_buy_tax_ppn: "PPN"
 dropdown_product_buy_amount: "10000"
+product_input_price_10k: "10000"
+product_input_price_20k: "20000"
 
 #date-selection
 first_day_of_september: "01/09/2021"
@@ -21,3 +23,18 @@ last_day_of_september: "27/09/2021"
 
 #test data to input
 billing_address_data: "Jalan Menuju Surga"
+
+#invoice verification data
+checker_username: "checker"
+checker_email: "checker@mailinator.com"
+checker_telephone: "08123456789"
+checker_billing_address: "Jalan Menuju Surga"
+checker_shipping_address: "Jalan Menuju Kebaikan"
+checker_product_name: "Google Pixel 6"
+checker_product_code: "Sailfish06"
+checker_buy_unit_price: "6000000"
+checker_buy_unit_amount: "Rp. 6.000.000,00"
+checker_buy_unit_discount: "0%"
+checker_buy_unit_quantity: "1"
+checker_image: "sample-image.jpeg"
+checker_tax: "-"

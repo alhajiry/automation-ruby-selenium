@@ -49,7 +49,7 @@ When (/^User click "([^"]*)"$/) do |element|
     end
 end
 
-When (/^User fill "([^"]*)" with (text|image) "([^"]*)"$/) do |element, type, data|
+When (/^User fill "([^"]*)" with (text|image|value) "([^"]*)"$/) do |element, type, data|
     begin
         element_hash = mapper.key_element_processor(element)
 
@@ -79,8 +79,8 @@ When (/^User fill "([^"]*)" with random (word|phone|email|SKU) data$/) do |eleme
 
         case cond
             when "word"
-                base_word = 'testuser'
-                limiter = 10**3
+                base_word = 'test'
+                limiter = 10**4
                 rand_generator = SecureRandom.random_number(limiter)
                 rand_string = rand_generator.to_s
                 data = base_word + rand_string
@@ -221,20 +221,38 @@ Then(/^"([^"]*)" will (be|not) displayed$/) do |element, cond|
     begin
   
       element_hash = mapper.key_element_processor(element)
-  
+      is_displayed = element_displayed_checker(element_hash[0],element_hash[1], 30)
+      wait_counter = 0
+
       case cond
         when "be"
-          if(element_displayed_checker(element_hash[0],element_hash[1], 5))
+          if(is_displayed)
             log "'#{element}' displayed"
           else
             raise "'#{element}' not displayed"
           end
         when "not"
-          if(element_not_displayed_checker(element_hash[0],element_hash[1], 5))
-            raise "'#{element}' displayed"
-          else
-            log "'#{element}' not displayed"
-          end
+            while (is_displayed)
+                
+                limiter = 5
+
+                checker = element_displayed_checker(element_hash[0], element_hash[1], 5)
+                # puts "'#{is_displayed}'"
+                # puts "'#{checker}'"
+                
+                if (wait_counter == limiter)
+                    raise "timeout reached and '#{element}' still displayed"
+                end
+
+                if(checker == false)
+                    is_displayed = !is_displayed
+                    log "'#{element}' not displayed"
+                else
+                    sleep(wait_counter)
+                    wait_counter = wait_counter + 1
+                end
+                
+            end
         else
           raise "Unrecognized conditions . . .!"
       end
@@ -271,3 +289,78 @@ Then(/^"([^"]*)" (.*) will be equal to "([^"]*)"$/) do |element, attribute, data
         raise e.message
       end
     end
+
+Then(/^Verify "([^"]*)" text will be equal to "([^"]*)"$/) do |element, data|
+    begin
+        element_hash = mapper.key_element_processor(element)
+        data_comparison = mapper.test_data_hash[data]
+
+        element_text = user_get_text(element_hash[0], element_hash[1])
+
+        puts "'this is the actual data #{element_text}'"
+
+        if (element_text[0] == " ")
+            new_text = element_text.split(" ")
+            element_text = new_text.join(" ")
+        end
+
+        if (element_text == data_comparison)
+            log "actual data '#{element_text} is equal to expected data '#{data_comparison}'"
+        else
+            raise "actual data '#{element_text} does not match expected data '#{data_comparison}'"
+        end
+        
+    rescue StandardError => e
+        raise e.message
+    end
+end
+
+
+
+When(/^User click by coordinate (\d+)#(\d+)$/) do |corX, corY|
+    begin
+        corx_integer = corX.to_i
+        cory_integer = corY.to_i
+      
+        $driver.action.move_by(corx_integer, cory_integer).click.perform
+      
+    rescue Exception => e
+        error_handler(e)
+    end
+end
+
+When (/^Verify element (contains|with) "([^"]*)" text will displayed$/) do |cond1, data|
+  begin
+    
+    expected_data = mapper.test_data_hash[data]
+    locator = ''
+    
+    case cond1
+      when "contains"
+        locator = "//*[contains(text(),'#{expected_data}')]"
+      when "with"
+        locator = "//*[text()='#{expected_data}']"
+      else
+        raise "Unrecognized conditions 1 . . .!"
+    end
+
+    checker = element_displayed_checker('xpath', locator, 30)
+
+    if(checker)
+        case cond1
+            when "contains"
+                log "element that contains '#{expected_data} displayed'"
+            when "with"
+                log "element with '#{expected_data} displayed'"
+            else
+                raise "condition not match, please use 'contains' or 'with'"
+            end
+    end
+
+    rescue StandardError => e
+        raise e.message
+    end
+end
+
+
+
