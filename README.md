@@ -18,7 +18,7 @@ If assset folder not exist, please create it and put on the root of the project
 cucumber features/gherkin_file/test_case.feature:2
 
 **Current Scenario Available to Run**<br>
-cucumber features/gherkin_file/test_case.feature:9
+cucumber features/gherkin_file/test_case.feature:9 <br>
 cucumber features/gherkin_file/test_case.feature:71
 
 _Additional Notes_<br>
