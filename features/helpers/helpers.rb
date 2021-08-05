@@ -1,5 +1,3 @@
-require 'rspec/expectations'
-
 def user_find(selector, element, timeout = 30)
   begin
     
