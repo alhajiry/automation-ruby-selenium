@@ -78,6 +78,18 @@ def user_get_value(selector, element, el_attribute)
 
 end
 
+def user_select_value(selector, element, value)
+  begin
+    selection = user_find(selector, element)
+    option = Selenium::WebDriver::Support::Select.new(selection)
+    option.select_by(:text, value)
+    
+
+  rescue StandardError => e
+    raise e.message
+  end
+end
+
 def user_get_text(selector, element)
   begin
     element_text = user_find(selector, element).text

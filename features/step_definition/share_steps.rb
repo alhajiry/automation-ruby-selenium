@@ -1,9 +1,8 @@
-Then (/^User login and navigate to "([^"]*)"$/) do |element|
+Then (/^User login to "([^"]*)" and navigate to "([^"]*)" with account "([^"]*)"$/) do |url, element, account|
 begin
     steps %Q{
-        Given User go to url "mekari_jurnal_url"
-        When User login to mekari journal with "test_account"
-        And User check and click "notification_modal_close_button" if exist
+        Given User go to url "#{url}"
+        When User login with account "#{account}"
         And User click "#{element}"
     }
     end

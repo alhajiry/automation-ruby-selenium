@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
+ruby '2.5.5'
 
 # Webdriver
 gem 'selenium-webdriver', '3.142.7'

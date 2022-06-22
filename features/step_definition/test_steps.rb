@@ -16,20 +16,20 @@ Given (/^User go to url "([^"]*)"$/) do |url|
     end
 end
 
-Given (/^User login to mekari journal with "([^"]*)"$/) do |data|
+Given (/^User login with account "([^"]*)"$/) do |data|
     begin
 
         login_data = mapper.key_processor_login(data)
         
-        username_field = mapper.key_element_processor('mekari_username_field')
-        password_field = mapper.key_element_processor('mekari_password_field')
+        username_field = mapper.key_element_processor('username_field')
+        password_field = mapper.key_element_processor('password_field')
 
 
         user_fill(username_field[0], username_field[1], login_data[0])
         user_fill(password_field[0], password_field[1], login_data[1])
 
         steps %Q{
-            And User click "mekari_jurnal_login_button"
+            And User click "login_button"
         }
 
     rescue StandardError => e
@@ -37,11 +37,10 @@ Given (/^User login to mekari journal with "([^"]*)"$/) do |data|
     end
 end
 
-
 When (/^User click "([^"]*)"$/) do |element|
     begin
-        element_hash = mapper.key_element_processor(element)
 
+        element_hash = mapper.key_element_processor(element)
         click_element(element_hash[0], element_hash[1])
 
     rescue StandardError => e
@@ -130,6 +129,19 @@ Then (/^User check and click "([^"]*)" if exist$/) do |element|
     rescue StandardError => e
         raise e.message
     end
+end
+
+Then (/^User select dropdown menu "([^"]*)" with "([^"]*)"$/) do |element, data|
+    begin
+        element_hash = mapper.key_element_processor(element)
+        data = data.upcase
+
+        user_select_value(element_hash[0], element_hash[1], data)
+        
+
+    rescue StandardError => e
+        raise e.message
+    end  
 end
 
 Then (/^User select dropdown (button|input) "([^"]*)" with data "([^"]*)"$/) do |cond, element, data|

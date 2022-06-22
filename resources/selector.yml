@@ -1,89 +1,14 @@
 #login component
 
 #button
-tokopedia_login_button: "data-testid:btnHeaderLogin"
-mekari_jurnal_login_button: "id:new-signin-button"
-create_new_sales_dropdown_button: "xpath://*[@id = 'dropdown-activator-shadow' and span='Create new sales'] "
-create_invoice_button: "xpath://button[text()=' Create ']"
+login_button: "id:new-signin-button"
 
 #input-field
 #login
-mekari_username_field: "id:user_email"
-mekari_password_field: "id:user_password"
-jurnal_select_product_field: "id:select_product_1"
-jurnal_select_product_2_field: "id:select_product_2"
-jurnal_select_customer_field: "id:select_contact"
-jurnal_upload_image: "xpath://label[@for='attachments']/../descendant::input[@type='file']"
-jurnal_upload_image_button: "xpath://label[@for='attachments']/../descendant::input[@class='custom-file-input']/following-sibling::label"
+username_field: "id:user_email"
+password_field: "id:user_password"
 
-#add new customer
-jurnal_add_new_customer_text_button: "xpath://div[@id ='select_contact']/descendant::button[text()=' + Add new ']"
-jurnal_add_new_product_text_button: "xpath://div[@id ='select_product_1']/descendant::button[text()=' + Add new ']"
-jurnal_add_new_product_2_text_button: "xpath://div[@id ='select_product_2']/descendant::button[text()=' + Add new ']"
-jurnal_add_new_customer_name_field: "id:display_name"
-jurnal_add_new_customer_email_field: "id:c_email"
-jurnal_add_new_customer_telephone_field: "id:telephone"
-jurnal_add_new_customer_billing_address_field: "id:billing_address"
-jurnal_add_new_customer_shipping_address_field: "id:shipping_address"
-jurnal_save_button: "xpath://*[@type='button' and text() = ' Save ']"
-#add new product
-jurnal_add_new_product_name: "id:name"
-jurnal_add_new_product_unit: "xpath://input[@id='select_unit']/parent::div"
-jurnal_add_new_product_code: "id:product_code"
-jurnal_add_new_prod_cat: "class:tag_select"
-jurnal_add_new_buy_unit_price: "id:buy_price_per_unit"
-jurnal_add_new_buy_account: "xpath://label[@for='buy_account']/../div/div/div/div[@class='multiselect__tags']"
-jurnal_add_new_buy_tax: "xpath://label[@for='buy_tax']/../div/div/div/div/div[@class='multiselect__tags']"
-jurnal_add_new_sell_unit_price: "id:sell_price_per_unit"
-jurnal_add_new_sales_account: "xpath://label[@for='sell_account']/../div/div/div/div[@class='multiselect__tags']"
-jurnal_add_new_sell_tax: "xpath://label[@for='sell_tax']/../div/div/div/div/div[@class='multiselect__tags']"
-jurnal_buy_item_checkbox: "xpath://label[@class='custom-control-label' and text()=' I buy this item ']/.."
-jurnal_sell_item_checkbox: "xpath://label[@class='custom-control-label' and text()=' I sell this item ']/.."
-
-jurnal_product_input_price: "xpath:(//div[@class='input-group-text' and text()='Rp']/../following-sibling::input)[1]"
-jurnal_product_2_input_price: "xpath:(//div[@class='input-group-text' and text()='Rp']/../following-sibling::input)[3]"
-
-jurnal_input_product_first: "xpath:(//input[@placeholder = 'Select product'])[1]"
-
-#element in modal
-notification_modal_close_button: "xpath:*//button[@class='close btn-close-notification']"
-billing_address_checkbox: "xpath://label[@class='custom-control-label' and text()=' Same with billing address ']"
-
-#navigation-sidebar
-navigation_sales: "id:vnav-sales-link"
-
-#date picker component
-date_today_button: "class:date-picker-shortcut-button"
-date_picker_transaction_date: "xpath://label[@class='form-group-label' and text()='Transaction date']/following-sibling::div/input"
-date_picker_due_date: "xpath://label[@class='form-group-label' and text()='Due date']/following-sibling::div/input"
-date_picker_next_button: "class:date-picker-next-button"
-date_picker_previous_button: "class:date-picker-previous-button"
-date_picker_header: "class:date-picker-header-title"
-
-#modal
-create_contact_modal: "id:modal_create_contact"
-add_new_product_modal: "id:modal_create_product-1"
-add_new_product_2_modal: "id:modal_create_product-2"
-
-#invoice element
-sales_invoice_container: "xpath://div[contains(@class, 'show_paper')]"
-sales_invoice_customer_name: "xpath://p[text() = 'Customer']/../a/p"
-sales_invoice_billing_address: "xpath://p[text() = 'Billing address']/following-sibling::p"
-sales_invoice_shipping_address: "xpath://p[text() = 'Shipping address']/following-sibling::p"
-sales_invoice_transaction_date: "xpath://p[text() = 'Transaction date']/following-sibling::p"
-sales_invoice_due_date: "xpath://p[text() = 'Due date']/following-sibling::p"
-sales_invoice_product_1: "id:product_name00"
-sales_invoice_product_2: "id:product_name10"
-sales_invoice_product_1_quantity: "xpath://a[@id='product_name00']/ancestor::tr/td[2]"
-sales_invoice_product_1_unit: "xpath://a[@id='product_name00']/ancestor::tr/td[3]"
-sales_invoice_product_1_price: "xpath://a[@id='product_name00']/ancestor::tr/td[4]"
-sales_invoice_product_1_discount: "xpath://a[@id='product_name00']/ancestor::tr/td[5]"
-sales_invoice_product_1_tax: "xpath://a[@id='product_name00']/ancestor::tr/td[6]"
-sales_invoice_product_1_amount: "xpath://a[@id='product_name00']/ancestor::tr/td[7]"
-sales_invoice_product_1_subtotal: "xpath://p[text()= 'Subtotal']/following-sibling::p"
-sales_invoice_product_1_total: "xpath://p[text()= 'Total']/following-sibling::p"
-sales_invoice_product_1_balance_due: "xpath://p[text()= 'Balance due']/following-sibling::p"
-
-sales_invoice_product_attachment: "xpath://p[text()= 'attachments']/../div/p/a"
-sales_invoice_product_email: "xpath://p[text()= 'Email']/following-sibling::p"
-sales_invoice_product_currency: "xpath://p[text()= 'Currency']/following-sibling::p"
+#navigation menu
+company_info: "id:company_info"
+edit_company_info_btn: "xpath://*[@href='/manage/company_info/edit']"
+province_dropdown: "id:btn-province"
