@@ -1,2 +1,5 @@
 #url
 sandbox_sso_url: "https://sandbox-sso.mekari.com"
+edit_company_page_title: "Edit info perusahaan"
+company_menu_page_content_subtitle: "Berikut rincian info perusahaan anda"
+edit_company_success_message: "Data perusahaan telah diubah"

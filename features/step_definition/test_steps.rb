@@ -134,7 +134,6 @@ end
 Then (/^User select dropdown menu "([^"]*)" with "([^"]*)"$/) do |element, data|
     begin
         element_hash = mapper.key_element_processor(element)
-        data = data.upcase
 
         user_select_value(element_hash[0], element_hash[1], data)
         
