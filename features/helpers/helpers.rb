@@ -82,6 +82,7 @@ def user_select_value(selector, element, value)
   begin
     selection = user_find(selector, element)
     option = Selenium::WebDriver::Support::Select.new(selection)
+    user_find('xpath', "//option[text()='#{value}']")
     option.select_by(:text, value)
     
 
