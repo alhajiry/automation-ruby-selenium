@@ -84,7 +84,6 @@ def user_select_value(selector, element, value)
     option = Selenium::WebDriver::Support::Select.new(selection)
     user_find('xpath', "//option[text()='#{value}']")
     option.select_by(:text, value)
-    
 
   rescue StandardError => e
     raise e.message
