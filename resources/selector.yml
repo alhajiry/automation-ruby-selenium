@@ -1,33 +1,8 @@
-#login component
-
-#button
-login_button: "id:new-signin-button"
-
-#input-field
-#login
-username_field: "id:user_email"
-password_field: "id:user_password"
-
-#account
-account_header: "xpath://*[contains(@class, 'account-nav')]"
-
-#logout
-logout_btn: "xpath://*[@href='/navigate?id=sign_out']"
-
-#edit company
-company_name_field: "id:company-name-field"
-company_phone_field: "id:company-phone-field"
-company_email_field: "id:company-email-field"
-company_address_field: "id:company-address-field"
-submit_btn: "id:btn-save"
-
-#navigation menu
-navigation_sidebar: "class:sidebar"
-company_info: "id:company_info"
-edit_company_info_btn: "xpath://*[@href='/manage/company_info/edit']"
-province_dropdown: "id:btn-province"
-city_dropdown: "id:btn-city"
-postal_code_dropdown: "id:btn-postal-code"
-industry_dropdown: "id:btn-industry"
-company_size_dropdown: "id:btn-company-size"
-
+page_title : "id:tophead"
+answer_box_title_page: "id:answer1"
+name_form: "id:name"
+occupation_dropdown: "id:occupation"
+bluebox: "class:bluebox"
+redbox: "id:redbox"
+answer_box_bluebox: "id:answer4"
+answer_box_redbox: "id:answer6"

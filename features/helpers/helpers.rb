@@ -24,6 +24,30 @@ def user_find(selector, element, timeout = 30)
 
 end
 
+def user_finds(selector, element, timeout = 30)
+  begin
+    
+      wait = Selenium::WebDriver::Wait.new(:timeout => timeout)
+
+      if selector == 'id'
+          element_path = wait.until {$driver.find_elements(:id, element)}
+      elsif selector == 'name'
+          element_path = wait.until {$driver.find_elements(:name, element)}
+      elsif selector == 'xpath'
+          element_path = wait.until {$driver.find_elements(:xpath, element)}
+      elsif selector == 'class'
+          element_path = wait.until {$driver.find_elements(:class, element)}
+      elsif selector == 'data-testid'
+          selector_data = "//*[@data-testid='#{element_path}']"
+          element_path = wait.until {$driver.find_elements(:xpath, selector_data)}
+      end
+
+  rescue StandardError => e
+      raise e.message
+  end
+end
+
+
 def wait_for_element_clickable (selector, element, timeout = 30)
     begin
       wait = Selenium::WebDriver::Wait.new(timeout => timeout)

@@ -1,32 +1,37 @@
+@selenium-playground
 Feature: Test Sandbox
 
-    @edit-company-info
-    Scenario: Verify user edit company info and then logged out
-        Given User login to "sandbox_sso_url" and navigate to "company_info" with account "test_account"
-        Then Verify element contains "company_menu_page_content_subtitle" text will displayed
-        When User click "edit_company_info_btn"
-        Then Verify element contains "edit_company_page_title" text will displayed
-        When User fill "company_name_field" with text "company_name"
-        And User fill "company_phone_field" with text "company_phone"
-        And User fill "company_email_field" with text "company_email"
-        And User fill "company_address_field" with text "company_address"
-        And User select dropdown menu "province_dropdown" with "DKI JAKARTA"
-        And User select dropdown menu "city_dropdown" with "JAKARTA TIMUR"
-        And User select dropdown menu "postal_code_dropdown" with "13140"
-        And User select dropdown menu "industry_dropdown" with "Pertambangan"
-        And User select dropdown menu "company_size_dropdown" with "51 sampai 100 karyawan"
-        And User click "submit_btn"
-        Then Verify element contains "edit_company_success_message" text will displayed
-        When User click "company_info"
-        Then Verify element contains "company_name" text will displayed
-        And Verify element contains "company_phone" text will displayed
-        And Verify element contains "company_email" text will displayed
-        And Verify element contains "company_address" text will displayed
-        And Verify element contains "company_mining_industry_en" text will displayed
-        And Verify element contains "company_size" text will displayed
-        When User click "account_header"
-        And User click "logout_btn"
-        Then "login_button" will be displayed
+    @test-01
+    Scenario: Grab page title and place title text in answer slot #1
+        Given User go to url "playground"
+        When User save value from "page_title"
+        Then User fill the "answer_box_title_page" form with saved value
+    @test-02
+    Scenario: Fill out name section of form to be Kilgore Trout
+        Given User go to url "playground"
+        Then User fill "name_form" with text "name"
+    @test-03
+    Scenario: Set occupation on form to Sci-Fi Author
+        Given User go to url "playground"
+        Then User select dropdown menu "occupation_dropdown" with "Science Fiction Author"
+    @test-04
+    Scenario: Set occupation on form to Sci-Fi Author
+        Given User go to url "playground"
+        When User count elements "bluebox"
+        Then User fill the "answer_box_bluebox" form with saved value
+    @test-05
+    Scenario: Click link that says 'click me'
+        Given User go to url "playground"
+        Then User click element with "txt_button_click_me" text
+    @test-06
+    Scenario: Find red box on its page find class applied to it, and enter into answer box #6
+        Given User go to url "playground"
+        When User save element "redbox" "class" attribute
+        Then User fill the "answer_box_redbox" form with saved value
+
+
+
+
 
 
 

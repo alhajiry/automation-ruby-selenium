@@ -48,6 +48,23 @@ When (/^User click "([^"]*)"$/) do |element|
     end
 end
 
+When (/^User click element (with|contains) "([^"]*)" text$/) do |cond, data| 
+    begin
+        data_hash = mapper.test_data_hash[data]
+
+        xpath = if (cond == "with")
+                  xpath = "//*[text()='#{data_hash}']"
+                else
+                  xpath = "//*[contains(text(),'#{data_hash}')]"
+                end
+
+     click_element('xpath', xpath)
+
+    rescue StandardError => e
+      raise e.message
+    end
+end
+
 When (/^User fill "([^"]*)" with (text|image) "([^"]*)"$/) do |element, type, data|
     begin
         element_hash = mapper.key_element_processor(element)
@@ -294,6 +311,18 @@ Then(/^"([^"]*)" (.*) will be equal to "([^"]*)"$/) do |element, attribute, data
       end
     end
 
+    Then(/^User save element "([^"]*)" "(.*)" attribute$/) do |element, attribute|
+        begin
+          element_hash = mapper.key_element_processor(element)
+          element_value = user_get_value(element_hash[0], element_hash[1], attribute)
+    
+          @el_value = element_value
+    
+        rescue StandardError => e
+            raise e.message
+          end
+        end
+
 Then(/^Verify "([^"]*)" text will be equal to "([^"]*)"$/) do |element, data|
     begin
         element_hash = mapper.key_element_processor(element)
@@ -319,6 +348,49 @@ Then(/^Verify "([^"]*)" text will be equal to "([^"]*)"$/) do |element, data|
     end
 end
 
+Then(/^User save value from "([^"]*)"$/) do |element|
+    begin
+        element_hash = mapper.key_element_processor(element)
+        element_text = user_get_text(element_hash[0], element_hash[1])
+
+        puts "'text: #{element_text} sucessfully saved'"
+
+        if (element_text[0] == " ")
+            new_text = element_text.split(" ")
+            element_text = new_text.join(" ")
+        end
+
+       @el_value = element_text
+        
+    rescue StandardError => e
+        raise e.message
+    end
+end
+
+Then(/^User fill the "([^"]*)" form with saved value$/) do |element|
+    begin
+        data = @el_value
+        element_hash = mapper.key_element_processor(element)
+
+        click_element(element_hash[0], element_hash[1])
+        user_fill(element_hash[0], element_hash[1], data)
+
+    rescue StandardError => e
+        raise e.message
+    end
+end
+
+Then(/^User count elements "([^"]*)"$/) do |element|
+    begin
+        element_hash = mapper.key_element_processor(element)
+
+        element = user_finds(element_hash[0], element_hash[1])
+        @el_value = element.length
+
+    rescue StandardError => e
+        raise e.message
+    end
+end
 
 
 When(/^User click by coordinate (\d+)#(\d+)$/) do |corX, corY|
