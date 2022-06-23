@@ -1,6 +1,7 @@
 #Ruby Mine Configuration
 .idea/
 reports
+report.html
 reports.html
 .DS_Store
 

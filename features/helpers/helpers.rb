@@ -99,7 +99,6 @@ def user_get_value(selector, element, el_attribute)
   end
 
     return element_value
-
 end
 
 def user_select_value(selector, element, value)
@@ -145,4 +144,8 @@ end
 
 def element_not_displayed_checker(selector, element, timeout = 15)
   !element_displayed_checker(selector, element, timeout)
+end
+
+def user_execute_js_script(command)
+  $driver.execute_script(command)
 end

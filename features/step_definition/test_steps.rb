@@ -311,17 +311,22 @@ Then(/^"([^"]*)" (.*) will be equal to "([^"]*)"$/) do |element, attribute, data
       end
     end
 
-    Then(/^User save element "([^"]*)" "(.*)" attribute$/) do |element, attribute|
-        begin
-          element_hash = mapper.key_element_processor(element)
-          element_value = user_get_value(element_hash[0], element_hash[1], attribute)
-    
-          @el_value = element_value
-    
-        rescue StandardError => e
-            raise e.message
-          end
+Then(/^User save element "([^"]*)" "(.*)" attribute$/) do |element, attribute|
+    begin
+        element_hash = mapper.key_element_processor(element)
+        element_value = user_get_value(element_hash[0], element_hash[1], attribute)
+
+        if(attribute == 'style')
+            element_value = element_value.split(/[:;]+/)
+            element_value = element_value[1]
         end
+    
+        @el_value = element_value
+    
+    rescue StandardError => e
+            raise e.message
+        end
+    end
 
 Then(/^Verify "([^"]*)" text will be equal to "([^"]*)"$/) do |element, data|
     begin
@@ -436,6 +441,25 @@ When (/^Verify element (contains|with) "([^"]*)" text will displayed$/) do |cond
     rescue StandardError => e
         raise e.message
     end
+end
+
+When(/^User execute javascript command "([^"]*)"$/) do |command|
+begin
+  result = user_execute_js_script(command)
+  @el_value = result
+
+  rescue StandardError => e
+    raise e.message
+  end
+end
+
+When(/^User set window size to x:(\d+) y:(\d+)$/) do |x, y|
+begin
+    $driver.manage.window.resize_to(x.to_i, y.to_i)
+
+  rescue StandardError => e
+    raise e.message
+  end 
 end
 
 
