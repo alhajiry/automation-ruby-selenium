@@ -207,9 +207,6 @@ When (/^User pick a date "([^"]*)" in "([^"]*)" calendar$/) do |data, element|
         click_element('class', 'date-picker-header-title') #click year picker
         click_element('class', 'date-picker-header-title') #click year picker
 
-        # date_month = date_month.slice(0, 3) #make the month to be 3 letter (january = jan)
-
-        # puts "#{date_year}"
         click_element('xpath', "//div[@class='date-picker-cell']/div[text()=' #{date_year} ']") #Select year
         puts "#{date_month}"
         click_element('xpath', "//div[@class='date-picker-cell']/div[text()=' #{date_month} ']") #Select month
@@ -217,8 +214,6 @@ When (/^User pick a date "([^"]*)" in "([^"]*)" calendar$/) do |data, element|
         if(date_day[0] == "0") ##sanitize the day (if 01 make it 1 to match the selector)
             date_day = date_day[1]
         end
-
-        # puts "#{date_day}"
 
 
         click_element('xpath', "//div[@data-date='#{date_day}']")
@@ -248,9 +243,7 @@ Then(/^"([^"]*)" will (be|not) displayed$/) do |element, cond|
                 limiter = 5
 
                 checker = element_displayed_checker(element_hash[0], element_hash[1], 5)
-                # puts "'#{is_displayed}'"
-                # puts "'#{checker}'"
-                
+
                 if (wait_counter == limiter)
                     raise "timeout reached and '#{element}' still displayed"
                 end
