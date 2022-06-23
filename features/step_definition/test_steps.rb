@@ -48,9 +48,10 @@ When (/^User click "([^"]*)"$/) do |element|
     end
 end
 
-When (/^User fill "([^"]*)" with (text|image|value) "([^"]*)"$/) do |element, type, data|
+When (/^User fill "([^"]*)" with (text|image) "([^"]*)"$/) do |element, type, data|
     begin
         element_hash = mapper.key_element_processor(element)
+        data_hash = mapper.test_data_hash[data]
 
         if(type == 'image')
             dir = ENV['PROJECT_DIR']
@@ -59,7 +60,6 @@ When (/^User fill "([^"]*)" with (text|image|value) "([^"]*)"$/) do |element, ty
             set_value = user_find(element_hash[0], element_hash[1])
             set_value.send_keys(dir)
         elsif (type == 'text')
-            data_hash = mapper.test_data_hash[data]
             click_element(element_hash[0], element_hash[1])
             user_fill(element_hash[0], element_hash[1], data_hash)
         else
