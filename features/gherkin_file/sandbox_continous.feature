@@ -1,4 +1,4 @@
-@selenium-playground
+@selenium-playground-continous
 Feature: Test Sandbox
 
     @all-test-case
