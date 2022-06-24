@@ -22,7 +22,13 @@ If assset folder not exist, please create it and put on the root of the project
 
 **How To Run**<br>
 
-    Cucumber features --tag @your-tag features/gherkin_file/your-feature-name.feature --format html --out report.html
+- Without report
+
+  Cucumber features --tag @your-tag features/gherkin_file/your-feature-name.feature.feature
+
+- With report
+
+  Cucumber features --tag @your-tag features/gherkin_file/your-feature-name.feature --format html --out report.html
 
 **Current Scenario Available to Run**<br>
 
