@@ -135,12 +135,50 @@ Then (/^User check and click "([^"]*)" if exist$/) do |element|
     begin
         element_hash = mapper.key_element_processor(element)
 
-        checker = element_displayed_checker(element_hash[0], element_hash[1], 5)
-        
+        checker = element_visible_checker(element_hash[0], element_hash[1], 15)
+      
         if checker
             click_element(element_hash[0], element_hash[1])
         else 
-            log "#{element} not exist"
+            raise "#{element} not exist"
+        end
+
+    rescue StandardError => e
+        raise e.message
+    end
+end
+
+Then (/^User check "([^"]*)" is exist and fill "([^"]*)"$/) do |element1, element2|
+    begin
+        element_hash1 = mapper.key_element_processor(element1)
+        element_hash2 = mapper.key_element_processor(element2)
+
+
+        checker = element_displayed_checker(element_hash1[0], element_hash1[1])
+        
+        if checker
+            user_fill(element_hash2[0], element_hash2[1], "yes")
+        else 
+            user_fill(element_hash2[0], element_hash2[1], "no")
+        end
+
+    rescue StandardError => e
+        raise e.message
+    end
+end
+
+Then (/^User check "([^"]*)" is visible and fill "([^"]*)"$/) do |element1, element2|
+    begin
+        element_hash1 = mapper.key_element_processor(element1)
+        element_hash2 = mapper.key_element_processor(element2)
+
+
+        checker = element_visible_checker(element_hash1[0], element_hash1[1], 15)
+        
+        if checker
+            user_fill(element_hash2[0], element_hash2[1], "yes")
+        else 
+            user_fill(element_hash2[0], element_hash2[1], "no")
         end
 
     rescue StandardError => e
@@ -318,7 +356,7 @@ Then(/^User save element "([^"]*)" "(.*)" attribute$/) do |element, attribute|
 
         if(attribute == 'style')
             element_value = element_value.split(/[:;]+/)
-            element_value = element_value[1]
+            element_value = element_value[1].delete(" ")
         end
     
         @el_value = element_value
@@ -461,6 +499,27 @@ begin
     raise e.message
   end 
 end
+
+When (/^User (accept|dismiss) alert$/) do |cond|
+begin
+    handle_alert(cond)
+
+rescue StandardError => e
+    raise e.message
+  end 
+end
+
+Then(/^User retrieve page title$/) do
+    begin
+        element_value = $driver.title
+    
+        @el_value = element_value
+    
+    rescue StandardError => e
+            raise e.message
+        end
+    end
+
 
 
 

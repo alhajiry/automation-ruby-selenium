@@ -1,7 +1,7 @@
 def user_find(selector, element, timeout = 30)
   begin
     
-      wait = Selenium::WebDriver::Wait.new(:timeout => timeout)
+      wait = Selenium::WebDriver::Wait.new(timeout: timeout)
 
       if selector == 'id'
           element_path = wait.until {$driver.find_element(:id, element)}
@@ -50,7 +50,7 @@ end
 
 def wait_for_element_clickable (selector, element, timeout = 30)
     begin
-      wait = Selenium::WebDriver::Wait.new(timeout => timeout)
+      wait = Selenium::WebDriver::Wait.new(timeout: timeout)
       element = wait.until {user_find(selector, element)}
       wait.until{ element.displayed? }
       wait.until{ element.enabled? }
@@ -125,12 +125,12 @@ def user_get_text(selector, element)
 
 end
 
-def element_displayed_checker(selector, element, timeout = 15) 
+def element_displayed_checker(selector, element, timeout = 30) 
     is_displayed = false
     
   begin
 
-    if user_find(selector, element, timeout) != nil
+    if user_find(selector, element, timeout = 30) != nil
       is_displayed = true
     end
   
@@ -142,10 +142,37 @@ def element_displayed_checker(selector, element, timeout = 15)
 
 end
 
-def element_not_displayed_checker(selector, element, timeout = 15)
+def element_visible_checker(selector, element, timeout = 30)
+  begin
+      wait = Selenium::WebDriver::Wait.new(timeout: timeout)
+      element = user_find(selector, element)
+      is_visible = element.displayed?
+      
+    rescue StandardError => e
+      raise e.message
+    end
+
+      return is_visible
+end
+
+def element_not_displayed_checker(selector, element, timeout = 30)
   !element_displayed_checker(selector, element, timeout)
 end
 
 def user_execute_js_script(command)
   $driver.execute_script(command)
+end
+
+def handle_alert(command)
+  begin
+    case command
+    when "dismiss"
+      $driver.switch_to.alert().dismiss()
+    when "accept"
+      $driver.switch_to.alert().accept()
+    end
+
+  rescue StandardError => e
+    raise e.message
+  end
 end

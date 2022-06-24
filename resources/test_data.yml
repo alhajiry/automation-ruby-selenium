@@ -1,3 +1,6 @@
 playground : "http://timvroom.com/selenium/playground/"
 name: "Kilgore Trout"
 txt_button_click_me: "click me"
+txt_button_click_then_wait : "click then wait"
+txt_button_click_after_wait : "click after wait"
+passed_all_test: "Passed 17 of 17 tests"
